@@ -18,13 +18,11 @@ app.use(bodyParser.urlencoded({
     extended: true
 })); // request parser
 
-app.get('*', function (req, res) {
-    res.render('index');
-});
+
 
 // stylus configuration
 function compile(str, path) {
-    //return
+    return stylus(str).set('filname', path);
 }
 app.use(stylus.middleware({
     src: __dirname + '/public',
@@ -34,6 +32,12 @@ app.use(stylus.middleware({
 
 // static files middleware
 app.use(express.static(__dirname + '/public'));
+
+
+app.get('*', function (req, res) {
+    return res.render('index');
+});
+
 
 var port = 3000;
 app.listen(port);
