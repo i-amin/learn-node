@@ -1,0 +1,27 @@
+{
+  "name": "learn-node",
+  "description": "just a play ground for nodejs practice",
+  "main": "index.js",
+  "authors": [
+    "ibrahem amin"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ibrahem-amin/learn-node",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "toastr": "~2.1.2",
+    "angular": "~1.4.7",
+    "angular-resource": "~1.4.7",
+    "angular-route": "~1.4.7"
+  }
+}
