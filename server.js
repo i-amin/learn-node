@@ -5,7 +5,8 @@ var express = require('express'),
 
 
 // set the environment variable to dev or production
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env;
+env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // start express server
 var app = express();
@@ -17,7 +18,6 @@ app.use(logger('dev')); // logging system for node project
 app.use(bodyParser.urlencoded({
     extended: true
 })); // request parser
-
 
 
 // stylus configuration
@@ -33,6 +33,10 @@ app.use(stylus.middleware({
 // static files middleware
 app.use(express.static(__dirname + '/public'));
 
+// jade partials rendering
+app.get('/partials/:partialPath', function (req, res) {
+    res.render('partials/' + req.params.partialPath)
+});
 
 app.get('*', function (req, res) {
     return res.render('index');

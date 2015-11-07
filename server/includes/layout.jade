@@ -5,7 +5,9 @@ html
         link(rel="stylesheet", href="/vendor/bootstrap-css-only/css/bootstrap.min.css")
         link(rel="stylesheet", href="/vendor/toastr/toastr.css")
         link(rel="stylesheet", href="/css/style.css")
-body
+
+        base(href="/")
+body(ng-app="app")
     block main-content
 
     include scripts
