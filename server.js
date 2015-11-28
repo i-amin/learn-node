@@ -1,7 +1,9 @@
+"use strict";
 var express = require('express'),
     stylus = require('stylus'),
     logger = require('morgan'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose');
 
 
 // set the environment variable to dev or production
@@ -33,15 +35,35 @@ app.use(stylus.middleware({
 // static files middleware
 app.use(express.static(__dirname + '/public'));
 
+
+// -- mongodb connection
+mongoose.connect('mongodb://localhost/multivision');
+var db = mongoose.connection;
+db
+    .on('error', console.error.bind(console, "connection Error ......... "))
+    .once('open', function () {
+        console.log('multivsion db opened');
+    });
+
+// mongo read from db
+// TODO: remove that code to a model
+var messageSchema = mongoose.Schema({message: String});
+var message = mongoose.model('Message', messageSchema);
+var mongoMessage;
+message.findOne().exec(function (error, messageDoc) {
+    mongoMessage = messageDoc.message;
+});
+
 // jade partials rendering
 app.get('/partials/:partialPath', function (req, res) {
-    res.render('partials/' + req.params.partialPath)
+    res.render('partials/' + req.params.partialPath);
 });
 
 app.get('*', function (req, res) {
-    return res.render('index');
+    return res.render('index', {
+        mongoMessage: mongoMessage
+    });
 });
-
 
 var port = 3000;
 app.listen(port);
