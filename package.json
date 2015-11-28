@@ -15,6 +15,10 @@
   "bugs": {
     "url": "https://github.com/ibrahem-amin/learn-node/issues"
   },
+  "engines":{
+    "node":"4.1.x",
+    "npm":"2.14.x"
+  },
   "homepage": "https://github.com/ibrahem-amin/learn-node#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
