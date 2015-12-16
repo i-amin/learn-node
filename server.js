@@ -37,7 +37,12 @@ app.use(express.static(__dirname + '/public'));
 
 
 // -- mongodb connection
-mongoose.connect('mongodb://localhost/multivision');
+if (env === "development") {
+    mongoose.connect('mongodb://localhost/multivision');
+} else {
+    mongoose.connect('mongodb://admin:admin@ds033145.mongolab.com:33145/test01');
+}
+
 var db = mongoose.connection;
 db
     .on('error', console.error.bind(console, "connection Error ......... "))
