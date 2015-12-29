@@ -4,7 +4,8 @@
   "description": "just a play ground for nodejs practice",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall":"./node_module/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -15,12 +16,13 @@
   "bugs": {
     "url": "https://github.com/ibrahem-amin/learn-node/issues"
   },
-  "engines":{
-    "node":"4.1.x",
-    "npm":"2.14.x"
+  "engines": {
+    "node": "4.1.x",
+    "npm": "2.14.x"
   },
   "homepage": "https://github.com/ibrahem-amin/learn-node#readme",
   "dependencies": {
+    "bower": "^1.5.3",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "jade": "^1.11.0",
